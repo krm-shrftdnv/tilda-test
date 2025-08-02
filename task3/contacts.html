@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        .header,
+        .footer {
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .select-block {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        Телефон: <span class="phone">8-800-DIGITS</span>
+    </div>
+
+    <div class="select-block">
+        <label for="city-select">Выберите город:</label>
+        <select id="city-select">
+            <option value="">Другой</option>
+            <option value="moscow">Москва</option>
+            <option value="spb">Санкт-Петербург</option>
+            <option value="kazan">Казань</option>
+        </select>
+    </div>
+
+    <p>Свяжитесь с нами — мы ответим на все ваши вопросы!</p>
+
+    <div class="footer">
+        Телефон: <span class="phone">8-800-DIGITS</span>
+    </div>
+
+    <script>
+        const phones = {
+            moscow: '8-495-DIGITS',
+            spb: '8-812-DIGITS',
+            kazan: '8-843-DIGITS',
+            default: '8-800-DIGITS'
+        };
+
+        const phoneElements = document.querySelectorAll('.phone');
+        const select = document.getElementById('city-select');
+
+        select.addEventListener('change', () => {
+            const selected = select.value;
+            const phone = phones[selected] || phones.default;
+            phoneElements.forEach(el => el.textContent = phone);
+        });
+    </script>
+
+</body>
+
+</html>
